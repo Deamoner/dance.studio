@@ -77,17 +77,6 @@ function AppBar_({ isMenuOpen, onMenuOpen }) {
               </>
             )
           }
-          <Tooltip title="It's open source" arrow>
-            <IconButton
-              aria-label="go to github page"
-              component="a"
-              target="_blank"
-              rel="noreferrer"
-              href={repository}
-            >
-              <GithubIcon /> 
-            </IconButton>
-          </Tooltip>
           <Divider />
           <Tooltip title="Change theme" arrow>
             <IconButton

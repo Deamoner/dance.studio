@@ -1,9 +1,9 @@
 /* set your data here */
-const email = 'super-email-of-the-auther@gmail.com';
-const domain = 'your-project-domain.com'
+const email = 'info@idancer.studio';
+const domain = 'idancer.studio'
 /* ***************** */
 
-const repository = 'https://github.com/suren-atoyan/react-pwa';
+const repository = 'https://github.com/Deamoner/dance.studio';
 
 const messages = {
   app: {
@@ -18,7 +18,7 @@ const messages = {
   images: {
     failed: 'something went wrong during image loading :(',
   },
-  404: 'Hey bro? What are you looking for?',
+  404: 'Hey friend? What are you looking for?',
 };
 
 const copyright = {
@@ -64,7 +64,7 @@ const cancelationMessage = 'operation is manually canceled';
 
 const dateFormat = 'MMMM DD, YYYY';
 
-const title = 'React PWA';
+const title = 'Dance.studio';
 
 const themePair = ['dark', 'light'];
 

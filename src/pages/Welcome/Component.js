@@ -4,7 +4,8 @@ import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
-
+import Webcam from "react-webcam";
+import ReactPlayer from 'react-player'
 import { FaReact as ReactIcon } from 'react-icons/fa';
 
 import Meta from 'components/Meta';
@@ -18,19 +19,18 @@ function Welcome() {
   return (
     <>
       <Meta
-        title="Welcome"
-        description="Welcome to React PWA"
+        title="Dance.Studio"
+        description="Practice and Compete in fun dancing challenges."
       />
+
       <Container maxWidth="sm" className={classes.root}>
-        <Box className={classes.wrapper}>
-          <Box className={classes.iconBox}><ReactIcon className={classes.icon} /></Box>
-          <Typography
-            variant={matchSmallScreen ? 'h4' : 'h3'}
-            className={classes.title}
-          >
-            React PWA
-          </Typography>
-        </Box>
+
+        <ReactPlayer url='https://www.youtube.com/watch?v=ysz5S6PUM-U' width="50%"/>
+
+
+
+
+        <Webcam style={{position:"relative", width:"50%", height:"50%"}} />
       </Container>
     </>
   );

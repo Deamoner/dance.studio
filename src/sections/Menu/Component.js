@@ -30,7 +30,7 @@ function Menu({ isOpen, onClose, onOpen }) {
     isOpen,
     isMobile,
   });
- 
+
   return (
     <SwipeableDrawer
       anchor="left"
@@ -46,25 +46,25 @@ function Menu({ isOpen, onClose, onOpen }) {
           <ListItemIcon>
             <WelcomeIcon />
           </ListItemIcon>
-          <ListItemText primary="Welcome" />
+          <ListItemText primary="Dance" />
         </StyledMenuItem>
         <StyledMenuItem onClick={onClose} component={RouterLink} to="/page-1">
           <ListItemIcon>
             <JSIcon />
           </ListItemIcon>
-          <ListItemText primary="Page 1" />
+          <ListItemText primary="Watch" />
         </StyledMenuItem>
         <StyledMenuItem onClick={onClose} component={RouterLink} to="/page-2">
           <ListItemIcon>
             <ReactIcon />
           </ListItemIcon>
-          <ListItemText primary="Page 2" />
+          <ListItemText primary="Challenges" />
         </StyledMenuItem>
         <StyledMenuItem onClick={onClose} component={RouterLink} to="/page-3">
           <ListItemIcon>
             <GithubIcon />
           </ListItemIcon>
-          <ListItemText primary="Page 3" />
+          <ListItemText primary="Leaderboard" />
         </StyledMenuItem>
         <StyledMenuItem onClick={onClose} component={RouterLink} to="/page-4">
           <ListItemIcon>
