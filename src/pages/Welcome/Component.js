@@ -4,8 +4,9 @@ import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
-import Webcam from "react-webcam";
 import ReactPlayer from 'react-player'
+//import DanceCam from 'components/DanceCam'
+import PoseNet from "react-posenet"
 import { FaReact as ReactIcon } from 'react-icons/fa';
 
 import Meta from 'components/Meta';
@@ -13,9 +14,7 @@ import Meta from 'components/Meta';
 import useStyles from './styles';
 
 function Welcome() {
-  const matchSmallScreen = useMediaQuery('(max-width: 600px)');
-  const classes = useStyles({ isSmallScreen: matchSmallScreen });
-
+  const webcamRef = React.useRef(null);
   return (
     <>
       <Meta
@@ -23,14 +22,16 @@ function Welcome() {
         description="Practice and Compete in fun dancing challenges."
       />
 
-      <Container maxWidth="sm" className={classes.root}>
-
-        <ReactPlayer url='https://www.youtube.com/watch?v=ysz5S6PUM-U' width="50%"/>
+      <Container>
 
 
 
 
-        <Webcam style={{position:"relative", width:"50%", height:"50%"}} />
+
+
+        <PoseNet
+
+        />
       </Container>
     </>
   );
