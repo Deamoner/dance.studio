@@ -1,5 +1,5 @@
 import React from 'react';
-import { useMemo, useCallback } from "react"
+import { useMemo, useState } from "react"
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
@@ -17,6 +17,17 @@ import useStyles from './styles';
 function Welcome() {
 //export default class Welcome extends Component {
 
+  const [count, setCount] = useState(0)
+  const [steppingState, setsteppingState] = useState(0)
+  const [dancestep, setDancestep] = useState(0)
+  let stepping = false;
+
+  const imitatearray = [
+    "https://www.yogajournal.com/.image/ar_3:2%2Cc_limit%2Ccs_srgb%2Cfl_progressive%2Cq_auto:good%2Cw_1400/MTUzODA3NzQzMzE1NDg2NDYy/03-tadasana.jpg",
+    "https://www.yogajournal.com/.image/ar_3:2%2Cc_limit%2Ccs_srgb%2Cq_auto:good%2Cw_1400/MTUzODA3NzQzMzE1MTU4Nzgy/cat-cow.gif",
+    "https://www.yogajournal.com/.image/c_limit%2Ccs_srgb%2Cq_auto:good%2Cw_1400/MTUzODA3NzQzMzE1MzU1Mzkw/06-side-plank.webp"
+
+  ];
 
   // get image for testing funciton
   const input = useMemo(() => {
@@ -24,9 +35,13 @@ function Welcome() {
     image.crossOrigin = ""
     //https://imgur.com/gallery/J2RvXlf
     //image.src = "https://i.imgur.com/2IA9xFG.jpg"
-    image.src = "https://i.imgur.com/KjsSnFo.png"
+    //image.src = "https://i.imgur.com/KjsSnFo.png"
+      console.log(dancestep)
+      image.src = imitatearray[dancestep]
+
     return image
   }, [])
+  const [step, setStep] = useState(input)
   // Here I need to make a function for
   let pose1 = {}
   let pose2 = {}
@@ -36,17 +51,38 @@ function Welcome() {
 
 
   const onChange = (e) => {
+    if(e[0] && pose1[0] && steppingState == false){
+      if(e[0].hasOwnProperty("keypoints") && pose1[0].hasOwnProperty("keypoints")) {
+        if(pose1[0].keypoints.length > 5 && e[0].keypoints.length > 5){
+          posesimilarity1 = poseSimilarity(pose1[0], e[0], { strategy: 'cosineSimilarity' })
+          if(isNaN(posesimilarity1) != true) {
+            setCount(posesimilarity1*100)
+            if(posesimilarity1*100 > 85 && steppingState == false){
 
-    if(pose1 && e[0]){
-      console.log(pose1[0])
-      console.log(e[0])
-      posesimilarity1 = poseSimilarity(pose1[0], e[0], { strategy: 'cosineSimilarity' })
-      console.log(posesimilarity1)
-      if(posesimilarity1*100 > 95){
-        alert("got here")
+
+
+
+              console.log(dancestep)
+              //setsteppingState(true);
+              const image = new Image()
+              image.crossOrigin = ""
+              image.src = imitatearray[dancestep]
+              setStep(image)
+              setDancestep(dancestep + 1);
+
+
+            }
+          }
+
+        }
+        else {
+          setCount(0)
+        }
       }
     }
-
+    else {
+      setCount(0)
+    }
   };
 
   return (
@@ -59,7 +95,7 @@ function Welcome() {
       <Container>
         <PoseNet
           inferenceConfig={{ decodingMethod: "single-person" }}
-          input={input}
+          input={step}
           onEstimate={poses => {
             pose1 = poses;
 
@@ -72,7 +108,7 @@ function Welcome() {
         />
         <br/>
         <div> <ReactStoreIndicator
-        value={posesimilarity1}
+        value={count}
         maxValue={100}
       /> </div>
       </Container>
