@@ -32,7 +32,9 @@
     "react-score-indicator": "^2.2.1",
     "react-scripts": "3.4.1",
     "react-vertical-timeline": "^0.2.0",
-    "react-webcam": "^5.2.0"
+    "react-webcam": "^5.2.0",
+    "reactour": "^1.18.0",
+    "styled-components": "^4.4.1"
   },
   "scripts": {
     "start": "react-scripts start",
